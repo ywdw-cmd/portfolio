@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kailib Copes — Mechanical Engineering Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Archivo+Expanded:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F1F2EF;
+    --panel:#FBFBF9;
+    --ink:#16181A;
+    --graphite:#2A2D31;
+    --steel:#565E66;
+    --line:#CDD0CB;
+    --line-soft:#E2E4DF;
+    --blue:#1F3A52;
+    --blue-soft:#365B7D;
+    --amber:#E08713;
+    --amber-soft:#F6C45A;
+    --blueprint-tint:#EAEFF1;
+    --maxw:1140px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .mono{font-family:"IBM Plex Mono",monospace;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+
+  /* ---------- Title block top bar ---------- */
+  .titlebar{
+    border-bottom:1.5px solid var(--ink);
+    background:var(--paper);
+    position:sticky;top:0;z-index:50;
+  }
+  .titlebar .wrap{
+    display:flex;justify-content:space-between;align-items:center;
+    gap:18px;height:52px;
+    font-family:"IBM Plex Mono",monospace;
+    font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;
+    color:var(--steel);
+  }
+  .titlebar strong{color:var(--ink);font-weight:600;}
+  .titlebar nav{display:flex;gap:22px;}
+  .titlebar nav a{text-decoration:none;color:var(--steel);transition:color .15s;}
+  .titlebar nav a:hover{color:var(--amber);}
+  .titlebar nav a:focus-visible{outline:2px solid var(--amber);outline-offset:3px;}
+  @media(max-width:720px){.titlebar nav{display:none;}}
+
+  /* ---------- Hero ---------- */
+  .hero{border-bottom:1.5px solid var(--ink);overflow:hidden;}
+  .hero .wrap{
+    display:grid;grid-template-columns:1.05fr 1fr;gap:0;
+    align-items:stretch;
+  }
+  .hero-left{padding:64px 40px 60px 0;}
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace;font-size:12px;
+    letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);
+    display:flex;align-items:center;gap:12px;margin-bottom:26px;
+  }
+  .eyebrow::before{content:"";width:34px;height:1.5px;background:var(--amber);display:inline-block;}
+  h1{
+    font-family:"Archivo Expanded","Archivo",sans-serif;
+    font-weight:800;font-size:clamp(2.7rem,6vw,4.4rem);
+    line-height:0.98;letter-spacing:-0.01em;margin:0 0 22px;
+    text-transform:uppercase;
+  }
+  h1 .sub{display:block;color:var(--blue);font-size:0.5em;letter-spacing:0.01em;margin-top:14px;font-weight:700;}
+  .thesis{font-size:1.12rem;color:var(--graphite);max-width:30em;margin:0 0 34px;}
+  .thesis b{color:var(--ink);font-weight:600;}
+  .hero-contact{display:flex;flex-wrap:wrap;gap:12px;}
+  .btn{
+    font-family:"IBM Plex Mono",monospace;font-size:12.5px;
+    letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;
+    padding:13px 20px;border:1.5px solid var(--ink);
+    display:inline-flex;align-items:center;gap:9px;
+    transition:background .16s,color .16s,transform .16s;
+  }
+  .btn:focus-visible{outline:2px solid var(--amber);outline-offset:3px;}
+  .btn-fill{background:var(--ink);color:var(--paper);}
+  .btn-fill:hover{background:var(--amber);border-color:var(--amber);color:var(--ink);}
+  .btn-line:hover{background:var(--ink);color:var(--paper);}
+
+  .hero-right{
+    border-left:1.5px solid var(--ink);
+    background:var(--blueprint-tint);
+    position:relative;display:flex;align-items:center;justify-content:center;
+    background-image:
+      linear-gradient(var(--line-soft) 1px,transparent 1px),
+      linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);
+    background-size:26px 26px;
+  }
+  .hero-right .tag{
+    position:absolute;top:14px;left:16px;
+    font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:0.14em;
+    color:var(--blue-soft);text-transform:uppercase;
+  }
+  .hero-right .tag.r{left:auto;right:16px;}
+  .hero-svg{width:100%;height:auto;display:block;padding:34px;}
+
+  @media(max-width:860px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero-left{padding:48px 0 44px;}
+    .hero-right{border-left:none;border-top:1.5px solid var(--ink);min-height:300px;}
+  }
+
+  /* ---------- Title-block strip ---------- */
+  .specstrip{border-bottom:1.5px solid var(--ink);background:var(--panel);}
+  .specstrip .wrap{display:grid;grid-template-columns:repeat(4,1fr);padding:0;}
+  .specstrip .cell{
+    padding:18px 22px;border-right:1px solid var(--line);
+  }
+  .specstrip .cell:last-child{border-right:none;}
+  .specstrip .k{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--steel);margin-bottom:5px;}
+  .specstrip .v{font-family:"Archivo",sans-serif;font-weight:700;font-size:1rem;color:var(--ink);}
+  @media(max-width:720px){
+    .specstrip .wrap{grid-template-columns:repeat(2,1fr);}
+    .specstrip .cell:nth-child(2){border-right:none;}
+    .specstrip .cell:nth-child(1),.specstrip .cell:nth-child(2){border-bottom:1px solid var(--line);}
+  }
+
+  /* ---------- Section scaffolding ---------- */
+  section{padding:74px 0;border-bottom:1.5px solid var(--ink);}
+  .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:42px;}
+  .sec-num{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--amber);font-weight:600;letter-spacing:0.1em;}
+  .sec-title{
+    font-family:"Archivo Expanded","Archivo",sans-serif;font-weight:700;
+    font-size:clamp(1.5rem,3vw,2.1rem);text-transform:uppercase;letter-spacing:-0.005em;margin:0;
+  }
+  .sec-rule{flex:1;height:1.5px;background:var(--line);align-self:center;}
+
+  /* ---------- Experience ---------- */
+  .exp{display:grid;grid-template-columns:230px 1fr;gap:32px;}
+  .exp-meta .org{font-family:"Archivo",sans-serif;font-weight:700;font-size:1.15rem;color:var(--ink);line-height:1.2;}
+  .exp-meta .role{color:var(--blue);font-weight:600;margin-top:6px;}
+  .exp-meta .when{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--steel);margin-top:14px;letter-spacing:0.04em;}
+  .exp-meta .loc{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--steel);margin-top:4px;letter-spacing:0.04em;}
+  .exp-body ul{list-style:none;margin:0;padding:0;}
+  .exp-body li{position:relative;padding-left:26px;margin-bottom:16px;color:var(--graphite);}
+  .exp-body li::before{
+    content:"";position:absolute;left:0;top:10px;width:9px;height:9px;
+    border:1.5px solid var(--amber);background:var(--paper);transform:rotate(45deg);
+  }
+  @media(max-width:720px){.exp{grid-template-columns:1fr;gap:22px;}}
+
+  /* ---------- Projects ---------- */
+  .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+  @media(max-width:820px){.proj-grid{grid-template-columns:1fr;}}
+  .card{
+    border:1.5px solid var(--ink);background:var(--panel);
+    display:flex;flex-direction:column;
+    transition:transform .18s ease,box-shadow .18s ease;
+  }
+  .card:hover{transform:translateY(-3px);box-shadow:8px 8px 0 var(--blue);}
+  .card-head{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:12px 16px;border-bottom:1.5px solid var(--ink);
+    font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
+  }
+  .card-head .id{color:var(--ink);font-weight:600;}
+  .card-head .rev{color:var(--steel);}
+  .badge{
+    font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:0.12em;
+    padding:3px 7px;border:1px solid currentColor;text-transform:uppercase;
+  }
+  .badge.built{color:var(--amber);}
+  .badge.example{color:var(--blue-soft);}
+  .card-figure{
+    background:var(--blueprint-tint);border-bottom:1.5px solid var(--ink);
+    background-image:
+      linear-gradient(var(--line-soft) 1px,transparent 1px),
+      linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);
+    background-size:22px 22px;
+    padding:22px;
+  }
+  .card-figure svg{display:block;width:100%;height:auto;}
+  .card-body{padding:22px 22px 24px;flex:1;display:flex;flex-direction:column;}
+  .card-body h3{
+    font-family:"Archivo",sans-serif;font-weight:700;font-size:1.22rem;
+    margin:0 0 6px;line-height:1.15;letter-spacing:-0.005em;
+  }
+  .card-body .role-line{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:0.06em;color:var(--blue);text-transform:uppercase;margin-bottom:14px;}
+  .card-body p{color:var(--graphite);margin:0 0 16px;font-size:0.96rem;}
+  .params{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:18px;}
+  .params div{background:var(--panel);padding:8px 11px;}
+  .params .pk{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--steel);}
+  .params .pv{font-family:"Archivo",sans-serif;font-weight:700;font-size:0.92rem;color:var(--ink);}
+  .tools{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto;}
+  .tools span{
+    font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:0.04em;
+    padding:4px 9px;background:var(--paper);border:1px solid var(--line);color:var(--steel);
+  }
+
+  /* ---------- Skills matrix ---------- */
+  .matrix{border:1.5px solid var(--ink);}
+  .mrow{display:grid;grid-template-columns:170px 1fr;border-bottom:1px solid var(--line);}
+  .mrow:last-child{border-bottom:none;}
+  .mrow .mlabel{
+    background:var(--ink);color:var(--paper);padding:16px 18px;
+    font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:0.1em;text-transform:uppercase;
+    display:flex;align-items:center;
+  }
+  .mrow .mtags{padding:14px 18px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--panel);}
+  .mtags span{
+    font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--graphite);
+    padding:5px 11px;border:1px solid var(--line);background:var(--paper);
+  }
+  .mtags span.hl{border-color:var(--amber);color:var(--ink);}
+  @media(max-width:620px){.mrow{grid-template-columns:1fr;}.mrow .mlabel{padding:11px 16px;}}
+
+  /* ---------- Education ---------- */
+  .edu{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;}
+  .edu .deg{font-family:"Archivo Expanded","Archivo",sans-serif;font-weight:700;font-size:clamp(1.4rem,3vw,2rem);text-transform:uppercase;line-height:1.05;}
+  .edu .inst{color:var(--blue);font-weight:600;margin-top:10px;font-size:1.05rem;}
+  .edu .yr{
+    font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:0.12em;color:var(--steel);
+    border:1.5px solid var(--ink);padding:14px 20px;text-transform:uppercase;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--ink);color:var(--paper);border-bottom:none;}
+  footer .wrap{padding:56px 28px 44px;}
+  footer .f-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:30px;}
+  footer h2{font-family:"Archivo Expanded","Archivo",sans-serif;font-weight:800;font-size:clamp(1.6rem,4vw,2.6rem);text-transform:uppercase;margin:0;line-height:1;}
+  footer .f-contact a{
+    display:block;font-family:"IBM Plex Mono",monospace;font-size:14px;color:var(--amber-soft);
+    text-decoration:none;letter-spacing:0.03em;margin-bottom:8px;
+  }
+  footer .f-contact a:hover{color:#fff;}
+  footer .f-meta{
+    margin-top:46px;padding-top:18px;border-top:1px solid #3a3d41;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:#888d92;
+  }
+
+  /* schematic stroke helpers */
+  .bp{stroke:var(--blue);}
+  .bp-soft{stroke:var(--blue-soft);}
+  .bp-amber{stroke:var(--amber);}
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== Title bar ===== -->
+<header class="titlebar">
+  <div class="wrap">
+    <div><strong>K. COPES</strong> &nbsp;/&nbsp; MECHANICAL ENGINEERING</div>
+    <nav>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== Hero ===== -->
+<section class="hero" style="padding:0;">
+  <div class="wrap">
+    <div class="hero-left">
+      <div class="eyebrow">Portfolio &middot; Rev 2027</div>
+      <h1>Kailib<br>Copes<span class="sub">Mechanical Engineer</span></h1>
+      <p class="thesis">Mechanical engineering student building <b>power, thermal, and motion systems</b> — from a dual-axis solar tracker to substation reliability work at a regional utility. I design it in CAD, validate it in FEA/CFD, and verify it on the bench.</p>
+      <div class="hero-contact">
+        <a class="btn btn-fill" href="#projects">View Projects →</a>
+        <a class="btn btn-line" href="mailto:rockymount46@gmail.com">Email Me</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <span class="tag">FIG.&nbsp;01 — DUAL-AXIS TRACKER</span>
+      <span class="tag r">SCALE&nbsp;N.T.S.</span>
+      <!-- Animated solar tracker schematic -->
+      <svg class="hero-svg" viewBox="0 0 420 360" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Schematic of a dual-axis solar tracker following the sun">
+        <!-- sun arc path -->
+        <path d="M40 230 A 170 170 0 0 1 380 230" class="bp-soft" stroke-dasharray="4 7" opacity="0.6"/>
+        <!-- moving sun -->
+        <g class="sun">
+          <circle cx="0" cy="0" r="15" class="bp-amber" fill="#F6C45A" fill-opacity="0.35"/>
+          <g class="bp-amber" stroke-width="1.4">
+            <line x1="0" y1="-23" x2="0" y2="-30"/>
+            <line x1="0" y1="23" x2="0" y2="30"/>
+            <line x1="-23" y1="0" x2="-30" y2="0"/>
+            <line x1="23" y1="0" x2="30" y2="0"/>
+            <line x1="-16" y1="-16" x2="-21" y2="-21"/>
+            <line x1="16" y1="-16" x2="21" y2="-21"/>
+            <line x1="-16" y1="16" x2="-21" y2="21"/>
+            <line x1="16" y1="16" x2="21" y2="21"/>
+          </g>
+        </g>
+        <!-- ray to panel -->
+        <line class="ray bp-amber" x1="210" y1="60" x2="210" y2="222" stroke-dasharray="3 5" opacity="0.7"/>
+        <!-- ground -->
+        <line x1="40" y1="320" x2="380" y2="320" class="bp"/>
+        <line x1="60" y1="328" x2="50" y2="320" class="bp-soft"/>
+        <line x1="100" y1="328" x2="90" y2="320" class="bp-soft"/>
+        <line x1="140" y1="328" x2="130" y2="320" class="bp-soft"/>
+        <line x1="320" y1="328" x2="310" y2="320" class="bp-soft"/>
+        <line x1="360" y1="328" x2="350" y2="320" class="bp-soft"/>
+        <!-- mast -->
+        <line x1="210" y1="320" x2="210" y2="250" class="bp"/>
+        <circle cx="210" cy="248" r="6" class="bp" fill="var(--blueprint-tint)"/>
+        <!-- panel (rotates) -->
+        <g class="panel" transform="translate(210 222)">
+          <g class="panel-rot">
+            <rect x="-74" y="-9" width="148" height="18" rx="2" class="bp" fill="#fff" fill-opacity="0.55"/>
+            <line x1="-37" y1="-9" x2="-37" y2="9" class="bp-soft"/>
+            <line x1="0" y1="-9" x2="0" y2="9" class="bp-soft"/>
+            <line x1="37" y1="-9" x2="37" y2="9" class="bp-soft"/>
+            <line x1="-74" y1="0" x2="74" y2="0" class="bp-soft" opacity="0.6"/>
+          </g>
+        </g>
+        <!-- dimension callout -->
+        <text x="210" y="352" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="2" fill="var(--blue-soft)">AZ + EL · CLOSED-LOOP</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Spec strip ===== -->
+<div class="specstrip">
+  <div class="wrap">
+    <div class="cell"><div class="k">Discipline</div><div class="v">Mechanical Eng.</div></div>
+    <div class="cell"><div class="k">Institution</div><div class="v">Sacramento State</div></div>
+    <div class="cell"><div class="k">Graduating</div><div class="v">2027</div></div>
+    <div class="cell"><div class="k">Status</div><div class="v">Open to Internships</div></div>
+  </div>
+</div>
+
+<!-- ===== Experience ===== -->
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <h2 class="sec-title">Experience</h2>
+      <span class="sec-rule"></span>
+    </div>
+    <div class="exp">
+      <div class="exp-meta">
+        <div class="org">SMUD</div>
+        <div class="role">Mechanical Engineering Intern</div>
+        <div class="when">JAN 2024 — PRESENT</div>
+        <div class="loc">SACRAMENTO, CA</div>
+      </div>
+      <div class="exp-body">
+        <ul>
+          <li>Supported design and reliability analysis of power-generation and distribution equipment, running load calculations and condition assessments to extend asset service life across the utility's infrastructure.</li>
+          <li>Coordinated with cross-functional teams of electrical, civil, and field engineers to plan equipment upgrades and integrate new components into existing substation and plant systems.</li>
+          <li>Authored technical specifications, inspection reports, and maintenance procedures that standardized work execution and supported regulatory and safety compliance.</li>
+          <li>Analyzed operational and sensor data to surface performance trends, flag emerging failures, and prioritize preventive-maintenance and capital-improvement projects.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Projects ===== -->
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <h2 class="sec-title">Projects</h2>
+      <span class="sec-rule"></span>
+    </div>
+
+    <div class="proj-grid">
+
+      <!-- PRJ-01 : Solar Tracker (REAL) -->
+      <article class="card">
+        <div class="card-head">
+          <span class="id">PRJ-01</span>
+          <span class="badge built">Built</span>
+        </div>
+        <div class="card-figure">
+          <svg viewBox="0 0 320 150" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Solar tracker with photoresistor sensor array">
+            <circle cx="58" cy="34" r="12" class="bp-amber" fill="#F6C45A" fill-opacity="0.3"/>
+            <g class="bp-amber"><line x1="58" y1="16" x2="58" y2="10"/><line x1="42" y1="22" x2="37" y2="18"/><line x1="74" y1="22" x2="79" y2="18"/></g>
+            <line x1="58" y1="46" x2="150" y2="86" class="bp-amber" stroke-dasharray="3 4" opacity="0.7"/>
+            <line x1="40" y1="128" x2="290" y2="128" class="bp"/>
+            <line x1="165" y1="128" x2="165" y2="96" class="bp"/>
+            <g transform="translate(165 88) rotate(-26)">
+              <rect x="-52" y="-7" width="104" height="14" rx="2" class="bp" fill="#fff" fill-opacity="0.5"/>
+              <line x1="-26" y1="-7" x2="-26" y2="7" class="bp-soft"/><line x1="0" y1="-7" x2="0" y2="7" class="bp-soft"/><line x1="26" y1="-7" x2="26" y2="7" class="bp-soft"/>
+            </g>
+            <rect x="225" y="70" width="56" height="44" rx="2" class="bp-soft" fill="var(--paper)"/>
+            <circle cx="240" cy="85" r="3.2" class="bp-amber"/><circle cx="266" cy="85" r="3.2" class="bp-amber"/>
+            <circle cx="240" cy="100" r="3.2" class="bp-amber"/><circle cx="266" cy="100" r="3.2" class="bp-amber"/>
+            <text x="253" y="128" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="7" fill="var(--blue-soft)" letter-spacing="1">LDR ARRAY</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3>Dual-Axis Solar Tracker</h3>
+          <div class="role-line">Mechatronics · CAD · Controls</div>
+          <p>A two-axis tracking platform that keeps a PV panel normal to the sun all day. A quad-photoresistor array senses the sun's position; an Arduino closed-loop controller compares light-intensity differentials and drives azimuth and elevation corrections in real time, lifting energy capture over a fixed-tilt baseline.</p>
+          <div class="params">
+            <div><div class="pk">Actuation</div><div class="pv">2× NEMA Stepper</div></div>
+            <div><div class="pk">Drivetrain</div><div class="pv">Worm Gear</div></div>
+            <div><div class="pk">Sensing</div><div class="pv">4× LDR Array</div></div>
+            <div><div class="pk">Control</div><div class="pv">Closed-Loop</div></div>
+          </div>
+          <div class="tools"><span>Arduino</span><span>Fusion 360</span><span>C/C++</span></div>
+        </div>
+      </article>
+
+      <!-- PRJ-02 : Topology bracket (EXAMPLE) -->
+      <article class="card">
+        <div class="card-head">
+          <span class="id">PRJ-02</span>
+          <span class="badge example">Example</span>
+        </div>
+        <div class="card-figure">
+          <svg viewBox="0 0 320 150" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Topology-optimized bracket with stress contours">
+            <path d="M50 40 H150 a40 40 0 0 1 0 70 H110 l-20 20 H50 Z" class="bp" fill="#fff" fill-opacity="0.4"/>
+            <path d="M70 55 q35 -2 55 12 q14 14 6 28 q-20 14 -40 6 q-22 -10 -21 -32 Z" class="bp-amber" fill="#F6C45A" fill-opacity="0.18"/>
+            <circle cx="150" cy="75" r="11" class="bp" fill="var(--paper)"/>
+            <circle cx="62" cy="52" r="5" class="bp-soft"/><circle cx="62" cy="98" r="5" class="bp-soft"/>
+            <path d="M190 50 H280 M190 75 H280 M190 100 H280" class="bp-soft" opacity="0.5"/>
+            <text x="186" y="44" font-family="IBM Plex Mono,monospace" font-size="7" fill="var(--blue-soft)" letter-spacing="1">σ-MAX</text>
+            <path d="M255 60 l10 0 l-5 8 Z" class="bp-amber" fill="var(--amber)"/>
+            <text x="186" y="118" font-family="IBM Plex Mono,monospace" font-size="7" fill="var(--blue-soft)" letter-spacing="1">FACTOR OF SAFETY 2.1</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3>Topology-Optimized UAV Arm Bracket</h3>
+          <div class="role-line">FEA · DFM · Lightweighting</div>
+          <p>Redesigned a quadcopter motor-mount bracket using load-driven topology optimization. Defined the flight load cases, ran iterative ANSYS studies to remove material from low-stress regions, and converged on an organic geometry that cut mass while holding a factor of safety above 2 — then re-modeled it for clean 3D printing.</p>
+          <div class="params">
+            <div><div class="pk">Mass Reduction</div><div class="pv">~38%</div></div>
+            <div><div class="pk">Min FoS</div><div class="pv">2.1</div></div>
+            <div><div class="pk">Method</div><div class="pv">Topology Opt.</div></div>
+            <div><div class="pk">Process</div><div class="pv">FDM Print</div></div>
+          </div>
+          <div class="tools"><span>ANSYS</span><span>Fusion 360</span><span>Inventor</span></div>
+        </div>
+      </article>
+
+      <!-- PRJ-03 : Heat exchanger (EXAMPLE) -->
+      <article class="card">
+        <div class="card-head">
+          <span class="id">PRJ-03</span>
+          <span class="badge example">Example</span>
+        </div>
+        <div class="card-figure">
+          <svg viewBox="0 0 320 150" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Shell and tube heat exchanger cross-section with flow">
+            <rect x="46" y="46" width="228" height="58" rx="6" class="bp" fill="#fff" fill-opacity="0.4"/>
+            <line x1="92" y1="62" x2="228" y2="62" class="bp-soft"/>
+            <line x1="92" y1="75" x2="228" y2="75" class="bp-amber"/>
+            <line x1="92" y1="88" x2="228" y2="88" class="bp-soft"/>
+            <path d="M30 75 H46" class="bp-amber"/><path d="M40 70 l8 5 l-8 5" class="bp-amber"/>
+            <path d="M274 75 H290" class="bp"/><path d="M282 70 l8 5 l-8 5" class="bp"/>
+            <path d="M70 30 V46" class="bp-soft"/><path d="M65 40 l5 8 l5 -8" class="bp-soft"/>
+            <path d="M250 120 V104" class="bp-soft"/><path d="M245 112 l5 -8 l5 8" class="bp-soft"/>
+            <text x="50" y="40" font-family="IBM Plex Mono,monospace" font-size="7.5" fill="var(--amber)" letter-spacing="1">HOT IN</text>
+            <text x="232" y="98" font-family="IBM Plex Mono,monospace" font-size="7.5" fill="var(--blue-soft)" letter-spacing="1">COLD</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3>Shell-and-Tube Heat Exchanger Study</h3>
+          <div class="role-line">Thermal · CFD · Heat Transfer</div>
+          <p>Sized and analyzed a counter-flow shell-and-tube heat exchanger for a small process loop. Worked the LMTD hand-calc first, then built a COMSOL conjugate heat-transfer model to map the temperature field, check the outlet target, and study how baffle spacing traded pressure drop against effectiveness.</p>
+          <div class="params">
+            <div><div class="pk">Config</div><div class="pv">Counter-Flow</div></div>
+            <div><div class="pk">Duty</div><div class="pv">~12 kW</div></div>
+            <div><div class="pk">Effectiveness</div><div class="pv">0.72</div></div>
+            <div><div class="pk">Validated</div><div class="pv">LMTD + CFD</div></div>
+          </div>
+          <div class="tools"><span>COMSOL</span><span>MATLAB</span><span>SolidWorks</span></div>
+        </div>
+      </article>
+
+      <!-- PRJ-04 : Suspension (EXAMPLE) -->
+      <article class="card">
+        <div class="card-head">
+          <span class="id">PRJ-04</span>
+          <span class="badge example">Example</span>
+        </div>
+        <div class="card-figure">
+          <svg viewBox="0 0 320 150" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Double wishbone suspension linkage">
+            <line x1="60" y1="40" x2="60" y2="120" class="bp" stroke-width="2"/>
+            <circle cx="60" cy="52" r="4" class="bp" fill="var(--paper)"/>
+            <circle cx="60" cy="108" r="4" class="bp" fill="var(--paper)"/>
+            <line x1="60" y1="52" x2="200" y2="64" class="bp-amber"/>
+            <line x1="60" y1="108" x2="200" y2="96" class="bp-amber"/>
+            <line x1="200" y1="64" x2="200" y2="96" class="bp" stroke-width="2"/>
+            <circle cx="200" cy="64" r="4" class="bp" fill="var(--paper)"/>
+            <circle cx="200" cy="96" r="4" class="bp" fill="var(--paper)"/>
+            <line x1="72" y1="58" x2="190" y2="92" class="bp-soft" stroke-dasharray="4 4"/>
+            <circle cx="245" cy="80" r="26" class="bp-soft" fill="#fff" fill-opacity="0.3"/>
+            <circle cx="245" cy="80" r="9" class="bp-soft"/>
+            <line x1="200" y1="80" x2="219" y2="80" class="bp"/>
+            <text x="120" y="40" font-family="IBM Plex Mono,monospace" font-size="7.5" fill="var(--amber)" letter-spacing="1">A-ARMS</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3>Baja SAE Front A-Arm Suspension</h3>
+          <div class="role-line">Vehicle Dynamics · CAD · Fabrication</div>
+          <p>Designed a double-wishbone front suspension for an off-road Baja vehicle. Set the camber and caster geometry from target handling, ran FEA on the welded A-arms against a 3-G bump load, and fabricated tube assemblies — taking the design from kinematic sketch to a part you could bolt on.</p>
+          <div class="params">
+            <div><div class="pk">Geometry</div><div class="pv">Double Wishbone</div></div>
+            <div><div class="pk">Load Case</div><div class="pv">3-G Bump</div></div>
+            <div><div class="pk">Material</div><div class="pv">4130 Chromoly</div></div>
+            <div><div class="pk">Output</div><div class="pv">Fab + Welded</div></div>
+          </div>
+          <div class="tools"><span>SolidWorks</span><span>Abaqus</span><span>AutoCAD</span></div>
+        </div>
+      </article>
+
+      <!-- PRJ-05 : Pump CFD (EXAMPLE) -->
+      <article class="card" style="grid-column:1/-1;">
+        <div class="card-head">
+          <span class="id">PRJ-05</span>
+          <span class="badge example">Example</span>
+        </div>
+        <div class="card-figure">
+          <svg viewBox="0 0 640 150" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Centrifugal pump impeller with streamlines">
+            <circle cx="150" cy="75" r="52" class="bp" fill="#fff" fill-opacity="0.35"/>
+            <circle cx="150" cy="75" r="10" class="bp" fill="var(--paper)"/>
+            <g class="bp-amber">
+              <path d="M150 75 q20 -28 44 -18" /><path d="M150 75 q28 8 26 34"/>
+              <path d="M150 75 q-8 30 -34 30"/><path d="M150 75 q-30 -2 -34 -28"/>
+              <path d="M150 75 q-2 -30 24 -34"/>
+            </g>
+            <path d="M150 23 a52 52 0 0 1 50 38 l40 -6" class="bp-soft"/>
+            <path d="M280 75 H600" class="bp-soft" stroke-dasharray="2 6" opacity="0.6"/>
+            <path d="M280 60 q120 -20 320 0" class="bp-soft" opacity="0.6"/>
+            <path d="M280 90 q120 20 320 0" class="bp-soft" opacity="0.6"/>
+            <path d="M560 68 l14 7 l-14 7" class="bp"/>
+            <text x="430" y="42" font-family="IBM Plex Mono,monospace" font-size="8" fill="var(--blue-soft)" letter-spacing="1.5">VELOCITY STREAMLINES</text>
+            <text x="120" y="142" font-family="IBM Plex Mono,monospace" font-size="8" fill="var(--amber)" letter-spacing="1.5">IMPELLER + VOLUTE</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3>Centrifugal Pump CFD Study</h3>
+          <div class="role-line">Fluid Mechanics · CFD · Turbomachinery</div>
+          <p>Modeled flow through a centrifugal pump impeller and volute to build the head-vs-flow curve. Set up the rotating-reference-frame simulation in OpenFOAM, checked mesh independence, and used the velocity and pressure fields to spot recirculation at off-design flow and identify where the volute geometry was costing efficiency.</p>
+          <div class="params" style="grid-template-columns:repeat(4,1fr);">
+            <div><div class="pk">Solver</div><div class="pv">MRF / RANS</div></div>
+            <div><div class="pk">Output</div><div class="pv">H–Q Curve</div></div>
+            <div><div class="pk">Peak Eff.</div><div class="pv">~68%</div></div>
+            <div><div class="pk">Check</div><div class="pv">Mesh Indep.</div></div>
+          </div>
+          <div class="tools"><span>OpenFOAM</span><span>Autodesk CFD</span><span>Python (NumPy)</span><span>ParaView</span></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== Skills ===== -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">03</span>
+      <h2 class="sec-title">Capabilities</h2>
+      <span class="sec-rule"></span>
+    </div>
+    <div class="matrix">
+      <div class="mrow">
+        <div class="mlabel">CAD</div>
+        <div class="mtags">
+          <span class="hl">SolidWorks</span><span class="hl">Inventor</span><span class="hl">Fusion 360</span><span>AutoCAD</span><span>Rhino</span><span>FreeCAD</span><span>OpenSCAD</span><span>LibreCAD</span><span>Blender</span><span>SketchUp</span>
+        </div>
+      </div>
+      <div class="mrow">
+        <div class="mlabel">FEA / CFD</div>
+        <div class="mtags">
+          <span class="hl">ANSYS</span><span class="hl">Abaqus</span><span class="hl">COMSOL</span><span>SolidWorks Sim</span><span>Autodesk CFD</span><span>OpenFOAM</span><span>Simulink</span>
+        </div>
+      </div>
+      <div class="mrow">
+        <div class="mlabel">Electrical</div>
+        <div class="mtags">
+          <span class="hl">KiCad</span><span>Raspberry Pi</span><span>STM32</span><span>ESP32</span>
+        </div>
+      </div>
+      <div class="mrow">
+        <div class="mlabel">Programming</div>
+        <div class="mtags">
+          <span class="hl">C / C++</span><span class="hl">MATLAB</span><span>C#</span><span>NumPy</span><span>Pandas</span><span>SciPy</span><span>R</span><span>SQL</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Education ===== -->
+<section id="education">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">04</span>
+      <h2 class="sec-title">Education</h2>
+      <span class="sec-rule"></span>
+    </div>
+    <div class="edu">
+      <div>
+        <div class="deg">B.S. Mechanical Engineering</div>
+        <div class="inst">Sacramento State University</div>
+      </div>
+      <div class="yr">Class of 2027</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer / Contact ===== -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="f-top">
+      <h2>Let's build<br>something.</h2>
+      <div class="f-contact">
+        <a href="mailto:rockymount46@gmail.com">rockymount46@gmail.com</a>
+        <a href="#projects">↑ Back to projects</a>
+      </div>
+    </div>
+    <div class="f-meta">
+      <span>KAILIB COPES — MECHANICAL ENGINEERING</span>
+      <span>PORTFOLIO · REV 2027</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  /* hero motion */
+  @keyframes track{
+    0%   {transform:translate(70px,230px);}
+    50%  {transform:translate(350px,230px);}
+    100% {transform:translate(70px,230px);}
+  }
+  @keyframes panelTilt{
+    0%   {transform:rotate(38deg);}
+    50%  {transform:rotate(-38deg);}
+    100% {transform:rotate(38deg);}
+  }
+  @keyframes raySweep{
+    0%{x1:70;x2:70;}50%{x1:350;x2:350;}100%{x1:70;x2:70;}
+  }
+  .hero-svg .sun{animation:track 14s ease-in-out infinite;}
+  .hero-svg .panel-rot{animation:panelTilt 14s ease-in-out infinite;transform-origin:center;}
+</style>
+<script>
+  // Sweep the sun-ray to match the sun position (SMIL-free, attribute-safe)
+  (function(){
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var ray = document.querySelector('.hero-svg .ray');
+    if(!ray) return;
+    var start = null, period = 14000;
+    function frame(t){
+      if(start===null) start=t;
+      var p = ((t-start)%period)/period;            // 0..1
+      var tri = p<0.5 ? p*2 : (1-p)*2;              // 0..1..0
+      var x = 70 + tri*280;
+      ray.setAttribute('x1', x);
+      ray.setAttribute('x2', x);
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  })();
+</script>
+</body>
+</html>
