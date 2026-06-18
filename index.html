@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kailib Copes — Mechanical Engineering Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Archivo+Expanded:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F1F2EF; --panel:#FBFBF9; --ink:#16181A; --graphite:#2A2D31;
+    --steel:#565E66; --line:#CDD0CB; --line-soft:#E2E4DF; --blue:#1F3A52;
+    --blue-soft:#365B7D; --amber:#E08713; --amber-soft:#F6C45A;
+    --blueprint-tint:#EAEFF1; --maxw:1140px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;}
+  .mono{font-family:"IBM Plex Mono",monospace;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+
+  .titlebar{border-bottom:1.5px solid var(--ink);background:var(--paper);position:sticky;top:0;z-index:50;}
+  .titlebar .wrap{display:flex;justify-content:space-between;align-items:center;gap:18px;height:52px;font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--steel);}
+  .titlebar strong{color:var(--ink);font-weight:600;}
+  .titlebar nav{display:flex;gap:22px;}
+  .titlebar nav a{text-decoration:none;color:var(--steel);transition:color .15s;}
+  .titlebar nav a:hover{color:var(--amber);}
+  .titlebar nav a:focus-visible{outline:2px solid var(--amber);outline-offset:3px;}
+  @media(max-width:720px){.titlebar nav{display:none;}}
+
+  .hero{border-bottom:1.5px solid var(--ink);overflow:hidden;}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:0;align-items:stretch;}
+  .hero-left{padding:64px 40px 60px 0;}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:12px;margin-bottom:26px;}
+  .eyebrow::before{content:"";width:34px;height:1.5px;background:var(--amber);display:inline-block;}
+  h1{font-family:"Archivo Expanded","Archivo",sans-serif;font-weight:800;font-size:clamp(2.7rem,6vw,4.4rem);line-height:0.98;letter-spacing:-0.01em;margin:0 0 22px;text-transform:uppercase;}
+  h1 .sub{display:block;color:var(--blue);font-size:0.5em;letter-spacing:0.01em;margin-top:14px;font-weight:700;}
+  .thesis{font-size:1.12rem;color:var(--graphite);max-width:30em;margin:0 0 34px;}
+  .thesis b{color:var(--ink);font-weight:600;}
+  .hero-contact{display:flex;flex-wrap:wrap;gap:12px;}
+  .btn{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;padding:13px 20px;border:1.5px solid var(--ink);display:inline-flex;align-items:center;gap:9px;transition:background .16s,color .16s,transform .16s;}
+  .btn:focus-visible{outline:2px solid var(--amber);outline-offset:3px;}
+  .btn-fill{background:var(--ink);color:var(--paper);}
+  .btn-fill:hover{background:var(--amber);border-color:var(--amber);color:var(--ink);}
+  .btn-line:hover{background:var(--ink);color:var(--paper);}
+  .hero-right{border-left:1.5px solid var(--ink);background:var(--blueprint-tint);position:relative;display:flex;align-items:center;justify-content:center;background-image:linear-gradient(var(--line-soft) 1px,transparent 1px),linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);background-size:26px 26px;}
+  .hero-right .tag{position:absolute;top:14px;left:16px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:0.14em;color:var(--blue-soft);text-transform:uppercase;}
+  .hero-right .tag.r{left:auto;right:16px;}
+  .hero-svg{width:100%;height:auto;display:block;padding:34px;}
+  @media(max-width:860px){.hero .wrap{grid-template-columns:1fr;}.hero-left{padding:48px 0 44px;}.hero-right{border-left:none;border-top:1.5px solid var(--ink);min-height:300px;}}
+
+  .processband{border-bottom:1.5px solid var(--ink);background:var(--panel);}
+  .processband .wrap{padding:40px 28px 46px;}
+  .process-head{display:flex;align-items:baseline;gap:14px;margin-bottom:24px;flex-wrap:wrap;}
+  .process-head .eyebrow2{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--amber);}
+  .process-head h2{font-family:"Archivo Expanded","Archivo",sans-serif;font-weight:700;font-size:clamp(1.3rem,2.6vw,1.7rem);text-transform:uppercase;letter-spacing:-0.005em;margin:0;}
+  .process-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .process-svg{min-width:780px;width:100%;height:auto;display:block;}
+  .specstrip{border-bottom:1.5px solid var(--ink);background:var(--panel);}
+  .specstrip .wrap{display:grid;grid-template-columns:repeat(4,1fr);padding:0;}
+  .specstrip .cell{padding:18px 22px;border-right:1px solid var(--line);}
+  .specstrip .cell:last-child{border-right:none;}
+  .specstrip .k{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--steel);margin-bottom:5px;}
+  .specstrip .v{font-family:"Archivo",sans-serif;font-weight:700;font-size:1rem;color:var(--ink);}
+  @media(max-width:720px){.specstrip .wrap{grid-template-columns:repeat(2,1fr);}.specstrip .cell:nth-child(2){border-right:none;}.specstrip .cell:nth-child(1),.specstrip .cell:nth-child(2){border-bottom:1px solid var(--line);}}
+
+  section{padding:74px 0;border-bottom:1.5px solid var(--ink);}
+  .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:42px;}
+  .sec-num{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--amber);font-weight:600;letter-spacing:0.1em;}
+  .sec-title{font-family:"Archivo Expanded","Archivo",sans-serif;font-weight:700;font-size:clamp(1.5rem,3vw,2.1rem);text-transform:uppercase;letter-spacing:-0.005em;margin:0;}
+  .sec-rule{flex:1;height:1.5px;background:var(--line);align-self:center;}
+
+  .exp{display:grid;grid-template-columns:230px 1fr;gap:32px;}
+  .exp + .exp{margin-top:40px;padding-top:40px;border-top:1px solid var(--line);}
+  .exp-meta .org{font-family:"Archivo",sans-serif;font-weight:700;font-size:1.15rem;color:var(--ink);line-height:1.2;}
+  .exp-meta .role{color:var(--blue);font-weight:600;margin-top:6px;}
+  .exp-meta .when{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--steel);margin-top:14px;letter-spacing:0.04em;}
+  .exp-meta .loc{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--steel);margin-top:4px;letter-spacing:0.04em;}
+  .exp-body ul{list-style:none;margin:0;padding:0;}
+  .exp-body li{position:relative;padding-left:26px;margin-bottom:16px;color:var(--graphite);}
+  .exp-body li::before{content:"";position:absolute;left:0;top:10px;width:9px;height:9px;border:1.5px solid var(--amber);background:var(--paper);transform:rotate(45deg);}
+  @media(max-width:720px){.exp{grid-template-columns:1fr;gap:22px;}}
+
+  .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+  @media(max-width:820px){.proj-grid{grid-template-columns:1fr;}}
+  .card{border:1.5px solid var(--ink);background:var(--panel);display:flex;flex-direction:column;transition:transform .18s ease,box-shadow .18s ease;}
+  .card.wide{grid-column:1/-1;}
+  .card:hover{transform:translateY(-3px);box-shadow:8px 8px 0 var(--blue);}
+  .card-head{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1.5px solid var(--ink);font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;}
+  .card-head .id{color:var(--ink);font-weight:600;}
+  .badge{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:0.12em;padding:3px 7px;border:1px solid currentColor;text-transform:uppercase;}
+  .badge.built{color:var(--amber);}
+  .badge.example{color:var(--blue-soft);}
+  .card-figure{position:relative;background:var(--blueprint-tint);border-bottom:1.5px solid var(--ink);background-image:linear-gradient(var(--line-soft) 1px,transparent 1px),linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);background-size:22px 22px;padding:14px;}
+  .card-figure.flush{padding:0;background:#ececec;background-image:none;}
+  .card-figure svg{display:block;width:100%;height:auto;}
+  .vp-tag{position:absolute;top:9px;left:11px;font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:0.13em;color:var(--blue-soft);text-transform:uppercase;pointer-events:none;}
+  .vp-tag.r{left:auto;right:11px;}
+  .card-figure-img{display:block;width:100%;height:auto;}
+  .card-body{padding:22px 22px 24px;flex:1;display:flex;flex-direction:column;}
+  .card-body h3{font-family:"Archivo",sans-serif;font-weight:700;font-size:1.22rem;margin:0 0 6px;line-height:1.15;letter-spacing:-0.005em;}
+  .card-body .role-line{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:0.06em;color:var(--blue);text-transform:uppercase;margin-bottom:14px;}
+  .card-body p{color:var(--graphite);margin:0 0 16px;font-size:0.96rem;}
+  .params{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:18px;}
+  .params.wide{grid-template-columns:repeat(4,1fr);}
+  .params div{background:var(--panel);padding:8px 11px;}
+  .params .pk{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--steel);}
+  .params .pv{font-family:"Archivo",sans-serif;font-weight:700;font-size:0.92rem;color:var(--ink);}
+  .tools{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto;}
+  .tools span{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:0.04em;padding:4px 9px;background:var(--paper);border:1px solid var(--line);color:var(--steel);}
+
+  .matrix{border:1.5px solid var(--ink);}
+  .mrow{display:grid;grid-template-columns:170px 1fr;border-bottom:1px solid var(--line);}
+  .mrow:last-child{border-bottom:none;}
+  .mrow .mlabel{background:var(--ink);color:var(--paper);padding:16px 18px;font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:0.1em;text-transform:uppercase;display:flex;align-items:center;}
+  .mrow .mtags{padding:14px 18px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--panel);}
+  .mtags span{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--graphite);padding:5px 11px;border:1px solid var(--line);background:var(--paper);}
+  .mtags span.hl{border-color:var(--amber);color:var(--ink);}
+  @media(max-width:620px){.mrow{grid-template-columns:1fr;}.mrow .mlabel{padding:11px 16px;}}
+
+  .edu{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;}
+  .edu .deg{font-family:"Archivo Expanded","Archivo",sans-serif;font-weight:700;font-size:clamp(1.4rem,3vw,2rem);text-transform:uppercase;line-height:1.05;}
+  .edu .inst{color:var(--blue);font-weight:600;margin-top:10px;font-size:1.05rem;}
+  .edu .yr{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:0.12em;color:var(--steel);border:1.5px solid var(--ink);padding:14px 20px;text-transform:uppercase;}
+
+  footer{background:var(--ink);color:var(--paper);border-bottom:none;}
+  footer .wrap{padding:56px 28px 44px;}
+  footer .f-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:30px;}
+  footer h2{font-family:"Archivo Expanded","Archivo",sans-serif;font-weight:800;font-size:clamp(1.6rem,4vw,2.6rem);text-transform:uppercase;margin:0;line-height:1;}
+  footer .f-contact a{display:block;font-family:"IBM Plex Mono",monospace;font-size:14px;color:var(--amber-soft);text-decoration:none;letter-spacing:0.03em;margin-bottom:8px;}
+  footer .f-contact a:hover{color:#fff;}
+  footer .f-meta{margin-top:46px;padding-top:18px;border-top:1px solid #3a3d41;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:#888d92;}
+
+  .bp{stroke:var(--blue);} .bp-soft{stroke:var(--blue-soft);} .bp-amber{stroke:var(--amber);}
+  .iso-line{stroke:#3c474e;stroke-width:1.1;} .iso-edge{stroke:#252b30;stroke-width:1.3;}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}html{scroll-behavior:auto;}}
+</style>
+</head>
+<body>
+
+<!-- shared CAD render gradients -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="mTop" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6f8f9"/><stop offset="1" stop-color="#d2d9dd"/></linearGradient>
+  <linearGradient id="mLeft" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c3cbd0"/><stop offset="1" stop-color="#99a2a8"/></linearGradient>
+  <linearGradient id="mRight" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#919aa0"/><stop offset="1" stop-color="#6c747a"/></linearGradient>
+  <linearGradient id="mDark" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5b636a"/><stop offset="1" stop-color="#3d444a"/></linearGradient>
+  <linearGradient id="aTop" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffdd86"/><stop offset="1" stop-color="#f2b13a"/></linearGradient>
+  <linearGradient id="aLeft" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ef9f29"/><stop offset="1" stop-color="#d3810f"/></linearGradient>
+  <linearGradient id="aRight" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c9780c"/><stop offset="1" stop-color="#a4610a"/></linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4d80a9"/><stop offset="1" stop-color="#163450"/></linearGradient>
+  <radialGradient id="steelRound" cx="0.4" cy="0.35" r="0.85"><stop offset="0" stop-color="#eef1f3"/><stop offset="0.6" stop-color="#b9c1c6"/><stop offset="1" stop-color="#828a90"/></radialGradient>
+</defs></svg>
+
+<header class="titlebar"><div class="wrap">
+  <div id="brand"></div>
+  <nav>
+    <a href="#experience">Experience</a><a href="#projects">Projects</a>
+    <a href="#skills">Skills</a><a href="#contact">Contact</a>
+  </nav>
+</div></header>
+
+<section class="hero" style="padding:0;"><div class="wrap">
+  <div class="hero-left">
+    <div class="eyebrow">Portfolio &middot; Rev 2027</div>
+    <h1 id="heroName"></h1>
+    <p class="thesis" id="heroTagline"></p>
+    <div class="hero-contact">
+      <a class="btn btn-fill" href="#projects">View Projects →</a>
+      <a class="btn btn-line" id="heroEmail" href="#">Email Me</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <span class="tag">FIG.&nbsp;01 — DUAL-AXIS TRACKER</span>
+    <span class="tag r">SCALE&nbsp;N.T.S.</span>
+    <svg class="hero-svg" viewBox="0 0 420 360" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Dual-axis solar tracker following the sun">
+      <path d="M40 230 A 170 170 0 0 1 380 230" class="bp-soft" stroke-dasharray="4 7" opacity="0.6"/>
+      <g class="sun" transform="translate(210 60)"><circle cx="0" cy="0" r="15" class="bp-amber" fill="#F6C45A" fill-opacity="0.35"/>
+        <g class="bp-amber" stroke-width="1.4"><line x1="0" y1="-23" x2="0" y2="-30"/><line x1="0" y1="23" x2="0" y2="30"/><line x1="-23" y1="0" x2="-30" y2="0"/><line x1="23" y1="0" x2="30" y2="0"/><line x1="-16" y1="-16" x2="-21" y2="-21"/><line x1="16" y1="-16" x2="21" y2="-21"/><line x1="-16" y1="16" x2="-21" y2="21"/><line x1="16" y1="16" x2="21" y2="21"/></g></g>
+      <line class="ray bp-amber" x1="210" y1="60" x2="210" y2="222" stroke-dasharray="3 5" opacity="0.7"/>
+      <line x1="40" y1="320" x2="380" y2="320" class="bp"/>
+      <line x1="60" y1="328" x2="50" y2="320" class="bp-soft"/><line x1="100" y1="328" x2="90" y2="320" class="bp-soft"/><line x1="140" y1="328" x2="130" y2="320" class="bp-soft"/><line x1="320" y1="328" x2="310" y2="320" class="bp-soft"/><line x1="360" y1="328" x2="350" y2="320" class="bp-soft"/>
+      <line x1="210" y1="320" x2="210" y2="250" class="bp"/>
+      <circle cx="210" cy="248" r="6" class="bp" fill="var(--blueprint-tint)"/>
+      <g class="panel" transform="translate(210 222)"><g class="panel-rot">
+        <rect x="-74" y="-9" width="148" height="18" rx="2" class="bp" fill="url(#glass)" fill-opacity="0.85"/>
+        <line x1="-37" y1="-9" x2="-37" y2="9" stroke="#bcd2e2" stroke-opacity="0.6"/><line x1="0" y1="-9" x2="0" y2="9" stroke="#bcd2e2" stroke-opacity="0.6"/><line x1="37" y1="-9" x2="37" y2="9" stroke="#bcd2e2" stroke-opacity="0.6"/><line x1="-74" y1="0" x2="74" y2="0" stroke="#bcd2e2" stroke-opacity="0.45"/>
+      </g></g>
+      <text x="210" y="352" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="2" fill="var(--blue-soft)">AZ + EL · CLOSED-LOOP</text>
+    </svg>
+  </div>
+</div></section>
+
+<div class="processband"><div class="wrap">
+  <div class="process-head">
+    <span class="eyebrow2">How I Work</span>
+    <h2>Engineering Design Process</h2>
+  </div>
+  <div class="process-scroll">
+  <svg class="process-svg" viewBox="0 0 1120 180" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Engineering design process: Define, Design, Analyze, Prototype, Test, Deploy, with an iterate loop from Test back to Design">
+    <path d="M848,72 C848,18 760,14 560,14 C360,14 272,18 272,72" stroke="var(--amber)" stroke-width="1.6" stroke-dasharray="5 6" opacity="0.9"/>
+    <polygon points="266,64 272,73 278,64" fill="var(--amber)"/>
+    <rect x="512" y="3" width="96" height="16" fill="var(--panel)"/>
+    <text x="560" y="15" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10.5" letter-spacing="3" fill="var(--amber)">ITERATE</text>
+    <g stroke="var(--blue)" stroke-width="1.6">
+      <line x1="106" y1="98" x2="240" y2="98"/><line x1="298" y1="98" x2="432" y2="98"/>
+      <line x1="490" y1="98" x2="624" y2="98"/><line x1="682" y1="98" x2="816" y2="98"/>
+      <line x1="874" y1="98" x2="1008" y2="98"/>
+    </g>
+    <g fill="var(--blue)">
+      <polygon points="239,94 246,98 239,102"/><polygon points="431,94 438,98 431,102"/>
+      <polygon points="623,94 630,98 623,102"/><polygon points="815,94 822,98 815,102"/>
+      <polygon points="1007,94 1014,98 1007,102"/>
+    </g>
+    <g transform="translate(80 98)">
+      <circle r="26" fill="var(--panel)" stroke="var(--ink)" stroke-width="1.6"/>
+      <g stroke="var(--graphite)" stroke-width="1.5">
+        <rect x="-8" y="-10" width="16" height="20" rx="2"/><rect x="-4.5" y="-13" width="9" height="5" rx="1.5" fill="var(--panel)"/>
+        <line x1="-4" y1="-2" x2="4" y2="-2"/><line x1="-4" y1="3" x2="4" y2="3"/><line x1="-4" y1="8" x2="1" y2="8"/>
+      </g>
+    </g>
+    <g transform="translate(272 98)">
+      <circle r="26" fill="var(--panel)" stroke="var(--ink)" stroke-width="1.6"/>
+      <g stroke="var(--graphite)" stroke-width="1.4">
+        <polygon points="0,-11 11,-5 0,1 -11,-5" fill="#e7ebee"/>
+        <polygon points="-11,-5 0,1 0,12 -11,6" fill="#d2d9dd"/>
+        <polygon points="11,-5 0,1 0,12 11,6" fill="#b9c1c6"/>
+      </g>
+    </g>
+    <g transform="translate(464 98)">
+      <circle r="26" fill="#fff6e6" stroke="var(--amber)" stroke-width="2"/>
+      <g stroke="var(--amber)" stroke-width="1.5">
+        <polygon points="0,-12 12,9 -12,9"/>
+        <path d="M-6,-1.5 L6,-1.5 M0,-12 L0,9 M-6,-1.5 L0,9 M6,-1.5 L0,9 M-6,-1.5 L-12,9 M6,-1.5 L12,9"/>
+      </g>
+    </g>
+    <g transform="translate(656 98)">
+      <circle r="26" fill="var(--panel)" stroke="var(--ink)" stroke-width="1.6"/>
+      <g stroke="var(--graphite)" stroke-width="1.5">
+        <circle r="6.5"/><circle r="2.6"/>
+        <line x1="0" y1="-11" x2="0" y2="-7.5"/><line x1="0" y1="11" x2="0" y2="7.5"/>
+        <line x1="-11" y1="0" x2="-7.5" y2="0"/><line x1="11" y1="0" x2="7.5" y2="0"/>
+        <line x1="-8" y1="-8" x2="-5.5" y2="-5.5"/><line x1="8" y1="-8" x2="5.5" y2="-5.5"/>
+        <line x1="-8" y1="8" x2="-5.5" y2="5.5"/><line x1="8" y1="8" x2="5.5" y2="5.5"/>
+      </g>
+    </g>
+    <g transform="translate(848 98)">
+      <circle r="26" fill="var(--panel)" stroke="var(--ink)" stroke-width="1.6"/>
+      <g stroke="var(--graphite)" stroke-width="1.5">
+        <path d="M-11,5 A11,11 0 0 1 11,5"/>
+        <line x1="-9" y1="3.5" x2="-7" y2="2.5"/><line x1="0" y1="-6" x2="0" y2="-4"/><line x1="9" y1="3.5" x2="7" y2="2.5"/>
+        <line x1="0" y1="5" x2="6" y2="-4" stroke="var(--amber)" stroke-width="1.8"/>
+        <circle cx="0" cy="5" r="1.8" fill="var(--graphite)" stroke="none"/>
+      </g>
+    </g>
+    <g transform="translate(1040 98)">
+      <circle r="26" fill="var(--panel)" stroke="var(--ink)" stroke-width="1.6"/>
+      <path d="M-9,1 L-3,8 L10,-8" stroke="var(--graphite)" stroke-width="2"/>
+    </g>
+    <g font-family="IBM Plex Mono,monospace" text-anchor="middle">
+      <g><text x="80"   y="142" font-size="10" letter-spacing="1.5" fill="var(--amber)">01</text><text x="80"   y="156" font-size="12.5" font-weight="600" fill="var(--ink)">DEFINE</text><text x="80"   y="169" font-size="8.5" letter-spacing="1" fill="var(--steel)">REQUIREMENTS</text></g>
+      <g><text x="272"  y="142" font-size="10" letter-spacing="1.5" fill="var(--amber)">02</text><text x="272"  y="156" font-size="12.5" font-weight="600" fill="var(--ink)">DESIGN</text><text x="272"  y="169" font-size="8.5" letter-spacing="1" fill="var(--steel)">CAD MODEL</text></g>
+      <g><text x="464"  y="142" font-size="10" letter-spacing="1.5" fill="var(--amber)">03</text><text x="464"  y="156" font-size="12.5" font-weight="600" fill="var(--ink)">ANALYZE</text><text x="464"  y="169" font-size="8.5" letter-spacing="1" fill="var(--amber)">FEA · CFD</text></g>
+      <g><text x="656"  y="142" font-size="10" letter-spacing="1.5" fill="var(--amber)">04</text><text x="656"  y="156" font-size="12.5" font-weight="600" fill="var(--ink)">PROTOTYPE</text><text x="656"  y="169" font-size="8.5" letter-spacing="1" fill="var(--steel)">BUILD</text></g>
+      <g><text x="848"  y="142" font-size="10" letter-spacing="1.5" fill="var(--amber)">05</text><text x="848"  y="156" font-size="12.5" font-weight="600" fill="var(--ink)">TEST</text><text x="848"  y="169" font-size="8.5" letter-spacing="1" fill="var(--steel)">VALIDATE</text></g>
+      <g><text x="1040" y="142" font-size="10" letter-spacing="1.5" fill="var(--amber)">06</text><text x="1040" y="156" font-size="12.5" font-weight="600" fill="var(--ink)">DEPLOY</text><text x="1040" y="169" font-size="8.5" letter-spacing="1" fill="var(--steel)">DELIVER</text></g>
+    </g>
+  </svg>
+  </div>
+</div></div>
+
+<div class="specstrip"><div class="wrap" id="specStrip"></div></div>
+
+<section id="experience"><div class="wrap">
+  <div class="sec-head"><span class="sec-num">01</span><h2 class="sec-title">Experience</h2><span class="sec-rule"></span></div>
+  <div id="expList"></div>
+</div></section>
+
+<section id="projects"><div class="wrap">
+  <div class="sec-head"><span class="sec-num">02</span><h2 class="sec-title">Projects</h2><span class="sec-rule"></span></div>
+  <div class="proj-grid" id="projGrid"></div>
+</div></section>
+
+<section id="skills"><div class="wrap">
+  <div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title">Capabilities</h2><span class="sec-rule"></span></div>
+  <div class="matrix" id="skillMatrix"></div>
+</div></section>
+
+<section id="education"><div class="wrap">
+  <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title">Education</h2><span class="sec-rule"></span></div>
+  <div class="edu" id="eduBlock"></div>
+</div></section>
+
+<footer id="contact"><div class="wrap">
+  <div class="f-top"><h2 id="footHeading"></h2>
+    <div class="f-contact"><a id="footEmail" href="#"></a><a href="#projects">↑ Back to projects</a></div>
+  </div>
+  <div class="f-meta"><span id="footMeta"></span><span>PORTFOLIO · REV 2027</span></div>
+</div></footer>
+
+
+<!-- ===================================================================== -->
+<!--  ✏️  EDIT YOUR SITE HERE                                               -->
+<!--                                                                       -->
+<!--  Everything you'd want to change lives in the SITE object below.       -->
+<!--  Change the text between the quote marks, save, refresh the page.      -->
+<!--  You never need to touch the HTML or CSS above this line.              -->
+<!--                                                                       -->
+<!--  • To add a photo to a project: put your image in the "renders"        -->
+<!--    folder, then set  image: "renders/your-file.png"                    -->
+<!--  • Leave  image: ""  to show the built-in drawing instead.             -->
+<!--  • badge: "Built"  = orange tag,  badge: "Example" = blue tag.         -->
+<!--  • wide: true  makes a project span the full width.                    -->
+<!-- ===================================================================== -->
+<script>
+const SITE = {
+
+  brand:   "K. COPES  /  MECHANICAL ENGINEERING",
+  name:    "Kailib Copes",
+  role:    "Mechanical Engineer",
+  email:   "rockymount46@gmail.com",
+  tagline: "Mechanical engineering student building <b>power, thermal, and motion systems</b> — from a dual-axis solar tracker to substation reliability work at a regional utility. I design it in CAD, validate it in FEA/CFD, and verify it on the bench.",
+
+
+  // The four boxes under the header
+  specStrip: [
+    ["Discipline",  "Mechanical Eng."],
+    ["Institution", "Sacramento State"],
+    ["Graduating",  "2027"],
+    ["Status",      "Open to Internships"]
+  ],
+
+  // ----- WORK EXPERIENCE -----  (add more {...} blocks for more jobs)
+  experience: [
+    {
+      org:      "SMUD",
+      role:     "Mechanical Engineering Intern",
+      dates:    "JAN 2024 — PRESENT",
+      location: "SACRAMENTO, CA",
+      bullets: [
+        "Supported design and reliability analysis of power-generation and distribution equipment, running load calculations and condition assessments to extend asset service life across the utility's infrastructure.",
+        "Coordinated with cross-functional teams of electrical, civil, and field engineers to plan equipment upgrades and integrate new components into existing substation and plant systems.",
+        "Authored technical specifications, inspection reports, and maintenance procedures that standardized work execution and supported regulatory and safety compliance.",
+        "Analyzed operational and sensor data to surface performance trends, flag emerging failures, and prioritize preventive-maintenance and capital-improvement projects."
+      ]
+    }
+  ],
+
+  // ----- PROJECTS -----  (copy a whole {...} block to add a project)
+  projects: [
+    {
+      id:         "PRJ-01",
+      badge:      "Built",
+      title:      "Dual-Axis Solar Tracker",
+      discipline: "Mechatronics · CAD · Controls",
+      image:      "renders/prj-01.png",   // <-- your real render
+      wide:       false,
+      description:"A two-axis tracking platform that keeps a PV panel normal to the sun all day. A quad-photoresistor array senses the sun's position; an Arduino closed-loop controller compares light-intensity differentials and drives azimuth and elevation corrections in real time, lifting energy capture over a fixed-tilt baseline.",
+      params: [
+        ["Actuation","2× NEMA Stepper"], ["Drivetrain","Worm Gear"],
+        ["Sensing","4× LDR Array"], ["Control","Closed-Loop"]
+      ],
+      tools: ["Arduino","Fusion 360","C/C++"]
+    },
+    {
+      id:         "PRJ-02",
+      badge:      "Built",
+      title:      "Topology-Optimized UAV Arm Bracket",
+      discipline: "FEA · DFM · Lightweighting",
+      image:      "renders/prj-02.png",                      // <-- add renders/prj-02.png to replace the drawing
+      wide:       false,
+      description:"Redesigned a quadcopter motor-mount bracket using load-driven topology optimization. Defined the flight load cases, ran iterative ANSYS studies to remove material from low-stress regions, and converged on an organic geometry that cut mass while holding a factor of safety above 2 — then re-modeled it for clean 3D printing.",
+      params: [
+        ["Mass Reduction","~38%"], ["Min FoS","2.1"],
+        ["Method","Topology Opt."], ["Process","FDM Print"]
+      ],
+      tools: ["ANSYS","Fusion 360","Inventor"]
+    },
+    {
+      id:         "PRJ-03",
+      badge:      "Study",
+      title:      "Shell-and-Tube Heat Exchanger Study",
+      discipline: "Thermal · CFD · Heat Transfer",
+      image:      "renders/prj-03.png",
+      wide:       false,
+      description:"Sized and analyzed a counter-flow shell-and-tube heat exchanger for a small process loop. Worked the LMTD hand-calc first, then built a COMSOL conjugate heat-transfer model to map the temperature field, check the outlet target, and study how baffle spacing traded pressure drop against effectiveness.",
+      params: [
+        ["Config","Counter-Flow"], ["Duty","~12 kW"],
+        ["Effectiveness","0.72"], ["Validated","LMTD + CFD"]
+      ],
+      tools: ["COMSOL","MATLAB","SolidWorks"]
+    },
+    {
+      id:         "PRJ-04",
+      badge:      "Built",
+      title:      "Baja SAE Front A-Arm Suspension",
+      discipline: "Vehicle Dynamics · CAD · Fabrication",
+      image:      "renders/prj-04.png",
+      wide:       false,
+      description:"Designed a double-wishbone front suspension for an off-road Baja vehicle. Set the camber and caster geometry from target handling, ran FEA on the welded A-arms against a 3-G bump load, and fabricated tube assemblies — taking the design from kinematic sketch to a part you could bolt on.",
+      params: [
+        ["Geometry","Double Wishbone"], ["Load Case","3-G Bump"],
+        ["Material","4130 Chromoly"], ["Output","Fab + Welded"]
+      ],
+      tools: ["SolidWorks","Abaqus","AutoCAD"]
+    },
+    {
+      id:         "PRJ-05",
+      badge:      "Model",
+      title:      "Centrifugal Pump CFD Study",
+      discipline: "Fluid Mechanics · CFD · Turbomachinery",
+      image:      "renders/prj-05.png",
+      wide:       true,
+      description:"Modeled flow through a centrifugal pump impeller and volute to build the head-vs-flow curve. Set up the rotating-reference-frame simulation in OpenFOAM, checked mesh independence, and used the velocity and pressure fields to spot recirculation at off-design flow and identify where the volute geometry was costing efficiency.",
+      params: [
+        ["Solver","MRF / RANS"], ["Output","H–Q Curve"],
+        ["Peak Eff.","~68%"], ["Check","Mesh Indep."]
+      ],
+      tools: ["Autodesk CFD","Python (NumPy)","ParaView"]
+    }
+  ],
+
+  // ----- SKILLS -----  hl:true highlights a skill (orange border)
+  skills: [
+    { label:"CAD", items:[
+      {name:"SolidWorks",hl:true},{name:"Inventor",hl:true},{name:"Fusion 360",hl:true},
+      {name:"AutoCAD"},{name:"Rhino"},{name:"FreeCAD"},{name:"OpenSCAD"},
+      {name:"LibreCAD"},{name:"Blender"},{name:"SketchUp"} ]},
+    { label:"FEA / CFD", items:[
+      {name:"ANSYS",hl:true},{name:"Abaqus",hl:true},{name:"COMSOL",hl:true},
+      {name:"SolidWorks Sim"},{name:"Autodesk CFD"},{name:"OpenFOAM"},{name:"Simulink"} ]},
+    { label:"Electrical", items:[
+      {name:"KiCad",hl:true},{name:"Raspberry Pi"},{name:"STM32"},{name:"ESP32"} ]},
+    { label:"Programming", items:[
+      {name:"C / C++",hl:true},{name:"MATLAB",hl:true},{name:"C#"},{name:"NumPy"},
+      {name:"Pandas"},{name:"SciPy"},{name:"R"},{name:"SQL"} ]}
+  ],
+
+  // ----- EDUCATION -----
+  education: { degree:"B.S. Mechanical Engineering", institution:"Sacramento State University", year:"Class of 2027" },
+
+  // ----- FOOTER -----
+  footerHeading: "Let's build<br>something."
+};
+
+/* ===================================================================== */
+/*  Built-in drawings used when a project has no image. You can ignore     */
+/*  this section — it just holds the fallback artwork.                     */
+/* ===================================================================== */
+const FIGURES = {
+
+  "_placeholder": `<svg viewBox="0 0 360 175" role="img" aria-label="render placeholder"><rect x="20" y="20" width="320" height="135" rx="4" fill="none" stroke="#9aa3a9" stroke-width="1.4" stroke-dasharray="6 6"/><text x="180" y="84" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="12" fill="#565E66" letter-spacing="2">ADD A RENDER</text><text x="180" y="103" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" fill="#8a9298" letter-spacing="1">SET image: IN THE PROJECT BLOCK</text></svg>`
+};
+
+/* ===================================================================== */
+/*  Page builder — you don't need to edit anything below.                 */
+/* ===================================================================== */
+(function build(){
+  const $ = s => document.querySelector(s);
+
+  $("#brand").innerHTML = "<strong>" + SITE.brand.split("/")[0].trim() + "</strong> &nbsp;/&nbsp; " + (SITE.brand.split("/")[1]||"").trim();
+  const parts = SITE.name.split(" ");
+  $("#heroName").innerHTML = parts[0] + "<br>" + parts.slice(1).join(" ") + '<span class="sub">' + SITE.role + "</span>";
+  $("#heroTagline").innerHTML = SITE.tagline;
+  $("#heroEmail").href = "mailto:" + SITE.email;
+  $("#footEmail").textContent = SITE.email;
+  $("#footEmail").href = "mailto:" + SITE.email;
+  $("#footHeading").innerHTML = SITE.footerHeading;
+  $("#footMeta").textContent = SITE.name.toUpperCase() + " — MECHANICAL ENGINEERING";
+
+  $("#specStrip").innerHTML = SITE.specStrip.map(([k,v]) =>
+    '<div class="cell"><div class="k">'+k+'</div><div class="v">'+v+'</div></div>').join("");
+
+  $("#expList").innerHTML = SITE.experience.map(e =>
+    '<div class="exp"><div class="exp-meta">'+
+      '<div class="org">'+e.org+'</div><div class="role">'+e.role+'</div>'+
+      '<div class="when">'+e.dates+'</div><div class="loc">'+e.location+'</div></div>'+
+    '<div class="exp-body"><ul>'+ e.bullets.map(b=>'<li>'+b+'</li>').join("") +'</ul></div></div>').join("");
+
+  $("#projGrid").innerHTML = SITE.projects.map(p => {
+    const badgeClass = p.badge.toLowerCase()==="built" ? "built" : "example";
+    const fig = p.image
+      ? '<div class="card-figure flush"><img class="card-figure-img" src="'+p.image+'" alt="'+p.title+' render"></div>'
+      : '<div class="card-figure"><span class="vp-tag">ISO VIEW</span><span class="vp-tag r">'+p.id+'</span>'+(FIGURES[p.id]||FIGURES._placeholder)+'</div>';
+    const params = '<div class="params'+(p.wide?' wide':'')+'">'+
+      p.params.map(([k,v])=>'<div><div class="pk">'+k+'</div><div class="pv">'+v+'</div></div>').join("")+'</div>';
+    const tools = '<div class="tools">'+p.tools.map(t=>'<span>'+t+'</span>').join("")+'</div>';
+    return '<article class="card'+(p.wide?' wide':'')+'">'+
+      '<div class="card-head"><span class="id">'+p.id+'</span><span class="badge '+badgeClass+'">'+p.badge+'</span></div>'+
+      fig+'<div class="card-body"><h3>'+p.title+'</h3>'+
+      '<div class="role-line">'+p.discipline+'</div><p>'+p.description+'</p>'+params+tools+'</div></article>';
+  }).join("");
+
+  $("#skillMatrix").innerHTML = SITE.skills.map(row =>
+    '<div class="mrow"><div class="mlabel">'+row.label+'</div><div class="mtags">'+
+    row.items.map(i=>'<span class="'+(i.hl?'hl':'')+'">'+i.name+'</span>').join("")+'</div></div>').join("");
+
+  $("#eduBlock").innerHTML =
+    '<div><div class="deg">'+SITE.education.degree+'</div><div class="inst">'+SITE.education.institution+'</div></div>'+
+    '<div class="yr">'+SITE.education.year+'</div>';
+})();
+
+/* hero sun animation */
+(function(){
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var ray = document.querySelector('.hero-svg .ray');
+  var sun = document.querySelector('.hero-svg .sun');
+  var panel = document.querySelector('.hero-svg .panel-rot');
+  if(!ray) return;
+  var start=null, period=14000;
+  var PIVOT_X=210, PIVOT_Y=222;     // panel pivot
+  var ARC_CX=210, ARC_CY=230, ARC_R=170;  // sun path (matches the drawn arc)
+  function frame(t){
+    if(start===null) start=t;
+    var p=((t-start)%period)/period;
+    var tri=p<0.5?p*2:(1-p)*2;            // 0..1..0 (sunrise -> sunset -> sunrise)
+  var SUN_SPAN=45;   // degrees the sun travels EACH side of noon (90 = full horizon-to-horizon)
+
+var phiDeg = 90 + SUN_SPAN*(1 - 2*tri);   // (90+SPAN) at left -> 90 at noon -> (90-SPAN) at right
+var phi = phiDeg*Math.PI/180;             // 180deg (left) -> 0deg (right)
+    var sunX=ARC_CX+ARC_R*Math.cos(phi);
+    var sunY=ARC_CY-ARC_R*Math.sin(phi);
+    if(sun) sun.setAttribute('transform','translate('+sunX+' '+sunY+')');
+    // ray follows the sun down to the pivot
+    if(ray){ ray.setAttribute('x1',sunX); ray.setAttribute('y1',sunY); ray.setAttribute('x2',PIVOT_X); ray.setAttribute('y2',PIVOT_Y); }
+    // panel rotates so its face normal points straight at the sun
+    if(panel){
+      var dx=sunX-PIVOT_X, dy=sunY-PIVOT_Y;
+      var r=Math.atan2(dx,-dy)*180/Math.PI;
+      panel.setAttribute('transform','rotate('+r+')');
+    }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
